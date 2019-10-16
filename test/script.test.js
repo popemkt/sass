@@ -2,7 +2,7 @@
 describe('script', function() {
   
   beforeEach(function() {
-    var fixture = `<div id="modal-container" class="modal-container">
+    var fixture = `<div id="modal-container" style="display: none" class="modal-container">
       <div id="video-modal" class="modal">
           <div class="container">
               <div class="title">Maroon 5 - Memories</div>
@@ -24,6 +24,8 @@ describe('script', function() {
     document.body.insertAdjacentHTML(
       'afterbegin', 
     fixture);
+    
+    videoModal.self.init();
   });
 
 
@@ -31,8 +33,31 @@ describe('script', function() {
     document.body.removeChild(document.getElementById('modal-container'));
   });
 
-  it('should exist', function() {
-    expect(document.getElementById('modal-container')).to.not.be.null;
+  it('should show and play', function() {
+    let modal = document.getElementById('modal-container');
+    let video = document.getElementById('video');
+    expect(modal).to.not.be.null;
     document.getElementById('btn-show-video').click();
+    expect(modal.style.display).to.equal('block');
+    setTimeout(() => expect(video.currentTime > 0 && !video.paused && !video.ended && video.readyState > 2).to.be.true, 300);
   });
+
+  it('should exit by clicking out', function() {
+    let modal = document.getElementById('modal-container');
+    let video = document.getElementById('video');
+    document.getElementById('btn-show-video').click();
+    document.getElementById('modal-container').click();    
+    expect(modal.style.display).to.equal('none');
+    expect(video.paused).to.be.true;
+  })
+
+  it('should exit by clicking out', function() {
+    let modal = document.getElementById('modal-container');
+    let video = document.getElementById('video');
+    document.getElementById('btn-show-video').click();
+    document.getElementById('btn-exit').click();    
+    expect(modal.style.display).to.equal('none');
+    expect(video.paused).to.be.true;
+  })
+  
 });
