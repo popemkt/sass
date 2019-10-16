@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="styles1.css">
+    <link rel="stylesheet" type='text/css' href="https://use.fontawesome.com/5c929da83d.css">
+</head>
+<body>
+    <div class="topnav" id="myTopnav">
+        <a href="#home" class="active a">Home</a>
+        <a href="#news" class="a">News</a>
+        <a href="#contact" class="a">Contact</a>
+        <a href="#about" class="a">About</a>
+        <a href="javascript:void(0);" class="icon a" onclick="myFunction()">
+            <i class="fa fa-bars"></i>
+        </a>
+    </div>
+    
+    <div class="content">
+        <h2>Responsive Topnav</h2>
+        <p>Resize the browser to below 1024px width.</p>
+        <p>Resize the browser to below 768x width.</p>
+        <p>Resize the browser to below 468px width.</p>
+        <button id="btn-show-video" class="btn">Click for video</button>
+    </div>
+
+    <div id="modal-container" class="modal-container">
+        <div id="video-modal" class="modal">
+            <div class="container">
+                <div class="title">Maroon 5 - Memories</div>
+                <video class="video" id="video" autoplay controls allowfullscreen>
+                    <source src="./video.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+                <div id="videoCaption">
+                        Music video of maroon 5.
+                </div>
+            </div>
+            <div id="btn-exit" class="btn-exit">
+                <i class="fa fa-times"></i>
+            </div>   
+        </div>
+    </div>
+
+    <script type="text/javascript">
+        function myFunction() {
+            var x = document.getElementById("myTopnav");
+            if (x.className === "topnav") {
+                x.className += " md-break";
+            } else {
+                x.className = "topnav";
+            }
+        }
+    </script>
+
+    <script type="text/javascript" src="./script.js">
+        videoModal.init();
+    </script>
+</body>
+</html>

@@ -1,0 +1,11 @@
+@mixin media-query-screen ($break-point) {
+    @media screen and (max-width: $break-point){
+        @content;
+    }
+}
+
+@mixin media-query-screen-with-height ($break-point, $break-point-height) {
+    @media screen and (max-width: $break-point) and (max-height: $break-point-height){
+        @content;
+    }
+}

@@ -1,0 +1,238 @@
+@import 'mixins';
+
+$break-point-xs: 468px;
+$break-point-md: 768px;
+$break-point-xl: 1024px;
+$break-point-md-height: 736px;
+$break-point-xs-height: 468px;
+
+
+$theme-gradient: linear-gradient(#005cb0, #004691);
+$theme-color-bold: #4c5baf;
+$theme-color-white: #fff;
+$title-color: #5c5c5c;
+$topnav-bg-color: #333;
+$modal-bg-color: #fff;
+$topnav-font-size-lg: 17px;
+$topnav-font-size-md: 25px;
+$btn-bg-color: #bec7fa;
+$modal-bg-color: #00000066;
+$a-color: #f2f2f2;
+$a-hover-bg-color: #f2f2f2;
+$a-active-bg-color: #4c5baf;
+$a-hover-color: #000;
+$a-active-color: #fff;
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 0;
+}
+
+button {
+    border: 0;
+}
+
+.modal-container {
+    background-color: $modal-bg-color;
+    display: none;
+    height: 100vh;
+    left: 0;
+    position: fixed;
+    top: 0;
+    width: 100vw;
+    z-index: 0;
+
+    .modal {
+        background-color: $theme-color-white;
+        border-radius: 5px;
+        height: 500px;
+        margin: 10% auto;
+        position: relative;
+        width: 600px;
+        z-index: -1;
+
+        @include media-query-screen($break-point-xl) {
+            height: 400px;
+            width: 500px;
+        }
+
+        @include media-query-screen($break-point-md) {
+            height: 350px;
+            width: 400px;
+        }
+
+        @include media-query-screen($break-point-xs) {
+            height: 300px;
+            width: 95%;
+        }
+
+        @include media-query-screen-with-height($break-point-xl, $break-point-md-height) {
+            height: 350px;
+            margin: 40px auto;
+            width: 450px;
+        }
+
+        @include media-query-screen-with-height($break-point-md, $break-point-md-height) {
+            height: 300px;
+            width: 400px;
+        }
+
+        @include media-query-screen-with-height($break-point-xs, $break-point-md-height) {
+            height: 270;
+            width: 95%;
+        }
+
+        @include media-query-screen-with-height($break-point-xl, $break-point-xs-height) {
+            height: 300;
+            width: 400px;
+        }
+
+        @include media-query-screen-with-height($break-point-md, $break-point-xs-height) {
+            height: 270;
+            width: 370px;
+        }
+
+        @include media-query-screen-with-height($break-point-xs, $break-point-xs-height) {
+            height: 250;
+            width: 95%;
+        }
+
+        .container {
+            margin: auto;
+            padding: 20px 0 0;
+            width: 95%;
+
+            .title {
+                color: $title-color;
+                font-weight: bold;
+                padding-bottom: 5px;
+            }
+
+            .video {
+                border: 1px solid;
+                margin: auto;
+                padding: 1px;
+                width: 100%;
+            }
+        }
+
+        .btn-exit {
+            background: color;
+            background-image: $theme-gradient;
+            border: 1px solid $theme-color-bold;
+            border-radius: 15px;
+            box-sizing: border-box;
+            color: $theme-color-white;
+            cursor: pointer;
+            font-size: 22px;
+            height: 28px;
+            position: absolute;
+            right: -8px;
+            text-align: center;
+            top: -8px;
+            width: 28px;
+        }
+    }
+
+}
+
+.btn {
+    background-color: $btn-bg-color;
+    border-left: 3px solid $theme-color-bold;
+}
+
+.content {
+    padding-left: 16px;
+}
+
+.topnav {
+    align-content: flex-start;
+    background-color: $topnav-bg-color;
+    display: flex;
+    flex-wrap: nowrap;
+    overflow: hidden;
+    position: relative;
+
+    @include media-query-screen($break-point-xl) {
+        align-items: stretch;
+        justify-content: space-between;
+    }
+
+    @include media-query-screen($break-point-xs) {
+        justify-content: space-around;
+        position: absolute;
+    }
+
+    .a {
+        color: $a-color;
+        display: block;
+        font-size: $topnav-font-size-lg;
+        padding: 14px 16px;
+        text-align: center;
+        text-decoration: none;
+
+        @include media-query-screen($break-point-xl) {
+            font-size: $topnav-font-size-md;
+        }
+
+        &:hover {
+            background-color: $a-hover-bg-color;
+            color: $a-hover-color;
+        }
+
+        &.active {
+            background-color: $a-active-bg-color;
+            color: $a-active-color;
+        }
+
+        &:not(:first-child) {
+            @include media-query-screen ($break-point-md) {
+                display: none;
+            }
+        }
+
+        &.icon {
+            display: none;
+
+            @include media-query-screen ($break-point-md) {
+                display: block;
+            };
+        }
+
+        &:first-child {
+            @include media-query-screen($break-point-xs) {
+                display: none;
+            }
+        }
+    }
+
+    &.md-break {
+
+        @include media-query-screen ($break-point-md) {
+            flex-direction: column;
+        };
+
+        .a {
+            @include media-query-screen ($break-point-md) {
+                display: block;
+                text-align: left;
+            }
+        }
+
+        .icon {
+            @include media-query-screen ($break-point-xl) {
+                position: absolute;
+                right: 0;
+                top: 0;
+            }
+
+            @include media-query-screen ($break-point-xs) {
+                order: -1;
+                position: relative;
+                text-align: center;
+            }
+        }
+    }
+
+}
+
