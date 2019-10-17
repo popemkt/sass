@@ -46,55 +46,68 @@ button {
         background-color: $theme-color-white;
         border-radius: 5px;
         height: 500px;
-        margin: 10% auto;
+        margin: 5% auto;
         position: relative;
         width: 600px;
         z-index: -1;
 
-        @include media-query-screen($break-point-xl) {
-            height: 400px;
-            width: 500px;
-        }
-
-        @include media-query-screen($break-point-md) {
-            height: 350px;
-            width: 400px;
-        }
-
-        @include media-query-screen($break-point-xs) {
-            height: 300px;
-            width: 95%;
-        }
-
-        @include media-query-screen-with-height($break-point-xl, $break-point-md-height) {
+        @include media-query-screen-with-height($break-point-md-height) {
             height: 350px;
             margin: 40px auto;
             width: 450px;
         }
 
-        @include media-query-screen-with-height($break-point-md, $break-point-md-height) {
+        @include media-query-screen-with-height($break-point-xs-height) {
             height: 300px;
             width: 400px;
         }
 
-        @include media-query-screen-with-height($break-point-xs, $break-point-md-height) {
-            height: 270;
-            width: 95%;
+
+
+        @include media-query-screen($break-point-xl) {
+            height: 400px;
+            width: 500px;
+
+            @include media-query-screen-with-height($break-point-md-height) {
+                height: 350px;
+                margin: 40px auto;
+                width: 450px;
+            }
+
+            @include media-query-screen-with-height($break-point-xs-height) {
+                height: 300px;
+                width: 400px;
+            }
         }
 
-        @include media-query-screen-with-height($break-point-xl, $break-point-xs-height) {
-            height: 300;
+        @include media-query-screen($break-point-md) {
+            height: 350px;
             width: 400px;
+
+            @include media-query-screen-with-height($break-point-md-height) {
+                height: 300px;
+                width: 400px;
+            }
+
+            @include media-query-screen-with-height($break-point-xs-height) {
+                height: 270px;
+                width: 370px;
+            }
         }
 
-        @include media-query-screen-with-height($break-point-md, $break-point-xs-height) {
-            height: 270;
-            width: 370px;
-        }
-
-        @include media-query-screen-with-height($break-point-xs, $break-point-xs-height) {
-            height: 250;
+        @include media-query-screen($break-point-xs) {
+            height: 300px;
             width: 95%;
+
+            @include media-query-screen-with-height($break-point-md-height) {
+                height: 270px;
+                width: 95%;
+            }
+
+            @include media-query-screen-with-height($break-point-xs-height) {
+                height: 220;
+                width: 95%;
+            }
         }
 
         .container {
@@ -163,7 +176,7 @@ button {
         position: absolute;
     }
 
-    .a {
+    .nav-item {
         color: $a-color;
         display: block;
         font-size: $topnav-font-size-lg;
@@ -212,7 +225,7 @@ button {
             flex-direction: column;
         };
 
-        .a {
+        .nav-item {
             @include media-query-screen ($break-point-md) {
                 display: block;
                 text-align: left;
